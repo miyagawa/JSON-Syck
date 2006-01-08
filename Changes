@@ -1,0 +1,58 @@
+[Changes for 0.10 - 2006-01-09]
+
+* Fix emitting of empty strings; they are now always quoted.
+  Reported by: Chia-Liang Kao
+
+[Changes for 0.09 - 2006-01-09]
+
+* Downgrade to the last stable release of libsyck to fix the
+  hash dumping layout problem.
+  Reported by: Gaal Yahas
+
+[Changes for 0.08 - 2006-01-09]
+
+* Fix double-free problem in object dumping.
+  Reported by: Chia-Liang Kao
+
+[Changes for 0.07 - 2006-01-09]
+
+* Loading of blessed hash and array references.
+
+* Do away with Test::More as testing dependency.
+
+[Changes for 0.06 - 2006-01-08]
+
+* Fix building problems on case-insensitive filesystems.
+  Reported by: Chia-Liang Kao
+
+[Changes for 0.05 - 2006-01-08]
+
+* DumpFile() and LoadFile() is exported by default.
+
+* Undef now dumps as '~'; also supports dumping blessed references as
+  'perl/!type'.  (Loading them doesn't work at this moment.)
+  Implemented by: Gaal Yahas
+
+* Loading hashes and arrays no longer creates dangling references
+  that caused memory leaks.
+  Reported by: Tatsuhiko Miyagawa
+
+[Changes for 0.04 - 2005-12-28]
+
+* Truly support Perl versions before 5.7.3, thanks to ppport.h.
+  Reported by: Anton Berezin
+
+[Changes for 0.03 - 2005-12-27]
+
+* Make syck.h compile with a Perl built with -DDEBUG.
+  Reported by: Slaven Rezic
+
+[Changes for 0.02 - 2005-12-26]
+
+* Move from SWIG to much lighter-weight native XS implementation.
+
+* Begins bundling Storable.xs to use the same serialization logic.
+
+[Changes for 0.01 - 2005-12-26]
+
+* Initial release to CPAN of this six-hours-old hack.
