@@ -167,7 +167,7 @@ static SV * Load(char *s) {
     SV *obj;
     SYMID v;
     SyckParser *parser;
-    SV *implicit = GvSV(gv_fetchpv("YAML::Syck::ImplicitTyping", TRUE, SVt_PV));
+    SV *implicit = GvSV(gv_fetchpv("JSON::Syck::ImplicitTyping", TRUE, SVt_PV));
 
     /* Don't even bother if the string is empty. */
     if (*s == '\0') { return &PL_sv_undef; }
