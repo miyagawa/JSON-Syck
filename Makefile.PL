@@ -1,11 +1,11 @@
 use strict;
 use inc::Module::Install 0.48;
 
-name        'YAML-Syck';
-all_from    'lib/YAML/Syck.pm';
+name        'JSON-Syck';
+all_from    'lib/JSON/Syck.pm';
 inc_paths   '.';
 c_files     (glob("*.c"), (-e 'Syck.c' ? () : 'Syck.c'));
 
 can_cc or die "This module requires a C compiler";
 
-sign; WriteAll;
+WriteAll;

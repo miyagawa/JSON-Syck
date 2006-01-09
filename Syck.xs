@@ -102,7 +102,7 @@ void perl_syck_emitter_handler(SyckEmitter *e, st_data_t data) {
     char* ref = NULL;
 
     if (sv == &PL_sv_undef) {
-        return syck_emit_scalar(e, "string", scalar_none, 0, 0, 0, "~", 1);
+        return syck_emit_scalar(e, "string", scalar_2quote, 0, 0, 0, "~", 1);
     }
     
 #define OBJECT_TAG     "tag:perl:"
@@ -131,7 +131,7 @@ void perl_syck_emitter_handler(SyckEmitter *e, st_data_t data) {
         case SVt_PVIV:
         case SVt_PVNV: {
             if (SvCUR(sv) > 0) {
-                syck_emit_scalar(e, OBJOF("string"), scalar_none, 0, 0, 0, SvPVX(sv), SvCUR(sv));
+                syck_emit_scalar(e, OBJOF("string"), scalar_2quote, 0, 0, 0, SvPVX(sv), SvCUR(sv));
             }
             else {
                 syck_emit_scalar(e, OBJOF("string"), scalar_1quote, 0, 0, 0, "", 0);
@@ -144,7 +144,7 @@ void perl_syck_emitter_handler(SyckEmitter *e, st_data_t data) {
         case SVt_PVBM:
         case SVt_PVLV: {
             if (sv_len(sv) > 0) {
-                syck_emit_scalar(e, OBJOF("string"), scalar_none, 0, 0, 0, SvPV_nolen(sv), sv_len(sv));
+                syck_emit_scalar(e, OBJOF("string"), scalar_2quote, 0, 0, 0, SvPV_nolen(sv), sv_len(sv));
             }
             else {
                 syck_emit_scalar(e, OBJOF("string"), scalar_1quote, 0, 0, 0, "", 0);
@@ -192,17 +192,17 @@ void perl_syck_emitter_handler(SyckEmitter *e, st_data_t data) {
         }
         case SVt_PVCV: {
             /* XXX TODO XXX */
-            syck_emit_scalar(e, OBJOF("string"), scalar_none, 0, 0, 0, SvPV_nolen(sv), sv_len(sv));
+            syck_emit_scalar(e, OBJOF("string"), scalar_2quote, 0, 0, 0, SvPV_nolen(sv), sv_len(sv));
             break;
         }
         case SVt_PVGV:
         case SVt_PVFM: {
             /* XXX TODO XXX */
-            syck_emit_scalar(e, OBJOF("string"), scalar_none, 0, 0, 0, SvPV_nolen(sv), sv_len(sv));
+            syck_emit_scalar(e, OBJOF("string"), scalar_2quote, 0, 0, 0, SvPV_nolen(sv), sv_len(sv));
             break;
         }
         case SVt_PVIO: {
-            syck_emit_scalar(e, OBJOF("string"), scalar_none, 0, 0, 0, SvPV_nolen(sv), sv_len(sv));
+            syck_emit_scalar(e, OBJOF("string"), scalar_2quote, 0, 0, 0, SvPV_nolen(sv), sv_len(sv));
             break;
         }
     }
@@ -215,6 +215,7 @@ SV* Dump(SV *sv) {
     struct emitter_xtra *bonus;
     SV* out = newSVpvn("", 0);
     SyckEmitter *emitter = syck_new_emitter();
+    emitter->headless = 1;
 
     bonus = emitter->bonus = S_ALLOC_N(struct emitter_xtra, 1);
     bonus->port = out;
@@ -231,7 +232,7 @@ SV* Dump(SV *sv) {
     return out;
 }
 
-MODULE = YAML::Syck		PACKAGE = YAML::Syck		
+MODULE = JSON::Syck		PACKAGE = JSON::Syck		
 
 PROTOTYPES: DISABLE
 
