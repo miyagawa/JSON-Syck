@@ -10,6 +10,12 @@ our @ISA     = qw( Exporter DynaLoader );
 
 __PACKAGE__->bootstrap;
 
+sub Dump {
+    my $json = JSON::Syck::_Dump(@_);
+    chomp($json);
+    $json;
+}
+
 1;
 
 __END__
