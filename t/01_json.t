@@ -9,18 +9,20 @@ $Data::Dumper::Terse  = 1;
 
 my @tests = (
     '"foo"',
-    '"foo\'bar"',
     '[1, 2, 3]',
+    '[1, 2, 3]',
+#    '1',
+#    '"foo\'bar"',
+#    '[1,2,3]',
     '[1.1, 2.2, 3.3]',
-    '{"foo": "bar"}',
+#    '[1.1,2.2,3.3]',
+#    '{"foo": "bar"}',
+#    '{"foo":"bar"}',
 );
 
 plan tests => scalar @tests;
 
-warn my $d = JSON::Syck::Dump(JSON::Syck::Load($tests[2]));
-
-for (@tests) {
-    my $test = ref($_) ? Storable::dclone($_) : $_;
+for my $test (@tests) {
     my $data = JSON::Syck::Load($test);
     my $json = JSON::Syck::Dump($data);
     is $json, $test, "roundtrip $test -> " . Dumper($data) . " -> $json";
