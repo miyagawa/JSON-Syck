@@ -1,4 +1,9 @@
-Revision history for JSON::Syck
+[Changes for 0.17 - 2006-01-11]
+
+* Use the correct style for dual vars and tied scalars.
+  Reported by: Tatsuhiko Miyagawa
+
+[Changes for 0.16 - 2006-01-11]
 
 0.01
         * Initial release, copied from Audrey Tang's YAML-Syck distro

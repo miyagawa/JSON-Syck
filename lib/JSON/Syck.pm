@@ -46,22 +46,18 @@ JSON::Syck is supposed to be very fast and memory efficient. See
 chansen's benchmark table at L<http://rafb.net/paste/results/8rSJGq74.txt>.
 
 JSON.pm comes with dozens of ways to do the same thing and lots of
-options, while JSON::Syck doesn't.
+options, while JSON::Syck doesn't. There's only C<Load> and C<Dump>
 
-JSON::Syck doesn't use camelCase method names :-)
+Oh, and JSON::Syck doesn't use camelCase method names :-)
 
-=head1 BUGS
+=head1 AUTHORS
 
-C<Load> function in JSON::Syck is actually the same with that of
-YAML's. That means, when you give a valid YAML but non-valid JSON
-data, it just accepts and is able to parse the string.
-
-=head1 AUTHOR
+Audrey Tang E<lt>autrijus@autrijus.orgE<gt>
 
 Tatsuhiko Miyagawa E<lt>miyagawa@gmail.comE<gt>
 
-This module is forked from Audrey Tang's excellent YAML::Syck module
-and 99% of the XS code is written by Audrey.
+This module is originally forked from Audrey Tang's excellent
+YAML::Syck module and 99.9% of the XS code is written by Audrey.
 
 The F<libsyck> code bundled with this module is written by I<why the
 lucky stiff>, under a BSD-style license.  See the F<COPYING> file for
