@@ -23,13 +23,14 @@ node.c
 perl_syck.h
 ppport.h
 ppport_math.h
-README
+Storable.xs
 syck.h
 Syck.xs
 syck_.c
 syck_st.c
 syck_st.h
 t/00_use.t
+t/01_json.t
 token.c
 yaml2byte.c
 yamlbyte.h
