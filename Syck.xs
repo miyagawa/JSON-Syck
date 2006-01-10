@@ -1,5 +1,5 @@
+#define YAML_IS_JSON 1
 #include "perl_syck.h"
-#undef YAML_IS_JSON
 
 MODULE = JSON::Syck		PACKAGE = JSON::Syck		
 
@@ -10,5 +10,5 @@ Load (s)
 	char *	s
 
 SV *
-_Dump (sv)
+Dump (sv)
 	SV *	sv

@@ -11,12 +11,7 @@ our @ISA     = qw( Exporter DynaLoader );
 __PACKAGE__->bootstrap;
 
 $JSON::Syck::ImplicitTyping = 1;
-
-sub Dump {
-    my $json = JSON::Syck::_Dump(@_);
-    chomp($json);
-    $json;
-}
+$JSON::Syck::Headless       = 1;
 
 1;
 
