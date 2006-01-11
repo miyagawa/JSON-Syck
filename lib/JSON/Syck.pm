@@ -4,14 +4,15 @@ use strict;
 use Exporter;
 use DynaLoader;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our @EXPORT_OK  = qw( Dump Load );
 our @ISA     = qw( Exporter DynaLoader );
 
 __PACKAGE__->bootstrap;
 
-$JSON::Syck::ImplicitTyping = 1;
-$JSON::Syck::Headless       = 1;
+$JSON::Syck::ImplicitTyping  = 1;
+$JSON::Syck::Headless        = 1;
+$JSON::Syck::ImplicitUnicode = 0;
 
 1;
 

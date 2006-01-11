@@ -10,8 +10,6 @@ eval { require JSON; $HAS_JSON = 1 };
 $Data::Dumper::Indent = 0;
 $Data::Dumper::Terse  = 1;
 
-#$JSON::Syck::ImplicitUnicode = 1;
-
 my @tests = (
     '"foo"',
     '[1, 2, 3]',
@@ -30,8 +28,6 @@ my @tests = (
 
 plan tests => scalar @tests * (1 + $HAS_JSON);
 
-my $conv = $HAS_JSON ? JSON::Converter->new : undef;
-
 for my $test (@tests) {
     my $data = eval { JSON::Syck::Load($test) };
     my $json = JSON::Syck::Dump($data);
@@ -40,7 +36,10 @@ for my $test (@tests) {
     for ($test, $json) {
         s/([,:]) /$1/eg;
     }
-    is $json, $test, "roundtrip $test -> " . Dumper($data) . " -> $json";
+
+    my $desc = "roundtrip $test -> " . Dumper($data) . " -> $json";
+    utf8::encode($desc);
+    is $json, $test, $desc;
 
     # try parsing the data with JSON.pm
     if ($HAS_JSON) {

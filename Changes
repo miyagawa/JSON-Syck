@@ -1,2 +1,6 @@
+0.02 2006/01/12
+        * Now handles non-ASCII utf-8 byte strings correctly
+          (Thanks to Audrey Tang, Douglas Crockford and why the luckystiff)
+
 0.01
         * Initial release, copied from Audrey Tang's YAML-Syck distro
