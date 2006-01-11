@@ -41,12 +41,13 @@ JSON data representation.
 You might want to know the difference between I<JSON> and
 I<JSON::Syck>.
 
-While JSON is a pure-perl module and JSON::Syck is based on libsyck,
+Since JSON is a pure-perl module and JSON::Syck is based on libsyck,
 JSON::Syck is supposed to be very fast and memory efficient. See
-chansen's benchmark table at L<http://rafb.net/paste/results/8rSJGq74.txt>.
+chansen's benchmark table at
+L<http://idisk.mac.com/christian.hansen/Public/perl/serialize.pl>
 
 JSON.pm comes with dozens of ways to do the same thing and lots of
-options, while JSON::Syck doesn't. There's only C<Load> and C<Dump>
+options, while JSON::Syck doesn't. There's only C<Load> and C<Dump>.
 
 Oh, and JSON::Syck doesn't use camelCase method names :-)
 
@@ -62,10 +63,6 @@ YAML::Syck module and 99.9% of the XS code is written by Audrey.
 The F<libsyck> code bundled with this module is written by I<why the
 lucky stiff>, under a BSD-style license.  See the F<COPYING> file for
 details.
-
-The F<Storable.xs> code bundled with this library is written by
-Raphael Manfredi and maintained by perl5-porters, under the same
-license as Perl.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

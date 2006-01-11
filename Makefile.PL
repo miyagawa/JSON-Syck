@@ -1,5 +1,6 @@
 use strict;
-use inc::Module::Install 0.48;
+use lib '.';
+use inc::Module::Install;
 
 name        'JSON-Syck';
 all_from    'lib/JSON/Syck.pm';
