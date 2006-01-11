@@ -10,6 +10,8 @@ eval { require JSON; $HAS_JSON = 1 };
 $Data::Dumper::Indent = 0;
 $Data::Dumper::Terse  = 1;
 
+#$JSON::Syck::ImplicitUnicode = 1;
+
 my @tests = (
     '"foo"',
     '[1, 2, 3]',
@@ -23,6 +25,7 @@ my @tests = (
     '{"foo": "bar"}',
     '{"foo":"bar"}',
     '[{"foo": 2}, {"foo": "bar"}]',
+    qq("\xe5\xaa\xbe"),
 );
 
 plan tests => scalar @tests * (1 + $HAS_JSON);

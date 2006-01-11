@@ -758,7 +758,9 @@ syck_emitter_escape( SyckEmitter *e, char *src, long len )
     int i;
     for( i = 0; i < len; i++ )
     {
-        if( (src[i] < 0x20) ) // || (0x7E < src[i]) )
+        if( (e->style == scalar_fold)
+                ? ((src[i] < 0x20) && (0 < src[i]))
+                : ((src[i] < 0x20) || (0x7E < src[i])) )
         {
             syck_emitter_write( e, "\\", 1 );
             if( '\0' == src[i] )
@@ -1217,6 +1219,9 @@ syck_emitter_mark_node( SyckEmitter *e, st_data_t n )
              * Insert into anchors table
              */
             st_insert( e->anchors, (st_data_t)oid, (st_data_t)anchor_name );
+
+            /* XXX - Added by Audrey Tang to handle self-recursive structures - XXX */
+            return 0;
         }
     }
     return oid;
