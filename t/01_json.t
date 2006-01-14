@@ -26,24 +26,30 @@ my @tests = (
     qq("\xe5\xaa\xbe"),
 );
 
-plan tests => scalar @tests * (1 + $HAS_JSON);
+plan tests => scalar @tests * (1 + $HAS_JSON) * 2;
 
-for my $test (@tests) {
-    my $data = eval { JSON::Syck::Load($test) };
-    my $json = JSON::Syck::Dump($data);
+for my $unicode (0, 1) {
+    local $JSON::Syck::ImplicitUnicode = $unicode;
+    for my $test (@tests) {
+        my $data = eval { JSON::Syck::Load($test) };
+        my $json = JSON::Syck::Dump($data);
+        utf8::encode($json) if !ref($json) && $unicode;
 
-    # don't bother white spaces
-    for ($test, $json) {
-        s/([,:]) /$1/eg;
-    }
+        # don't bother white spaces
+        for ($test, $json) {
+            s/([,:]) /$1/eg;
+        }
 
-    my $desc = "roundtrip $test -> " . Dumper($data) . " -> $json";
-    utf8::encode($desc);
-    is $json, $test, $desc;
+        my $desc = "roundtrip $test -> " . Dumper($data) . " -> $json";
+        utf8::encode($desc);
+        is $json, $test, $desc;
 
-    # try parsing the data with JSON.pm
-    if ($HAS_JSON) {
-        my $data_pp = eval { JSON::jsonToObj($json) };
-        is_deeply $data_pp, $data, "compatibility with JSON.pm $test";
+        # try parsing the data with JSON.pm
+        if ($HAS_JSON) {
+            utf8::encode($data) if !ref($data) && $unicode;
+            my $data_pp = eval { JSON::jsonToObj($json) };
+            is_deeply $data_pp, $data, "compatibility with JSON.pm $test";
+        }
     }
 }
+

@@ -34,7 +34,7 @@
 #  define SCALAR_UTF8   scalar_fold
 #  define SEQ_NONE      seq_none
 #  define MAP_NONE      map_none
-#  define COND_FOLD(x)  (SvUTF8(sv)
+#  define COND_FOLD(x)  (SvUTF8(sv))
 #  define TYPE_IS_NULL(x) (x == NULL)
 #  define OBJOF(a)        (*tag ? tag : a)
 #endif

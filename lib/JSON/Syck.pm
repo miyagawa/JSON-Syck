@@ -4,7 +4,7 @@ use strict;
 use Exporter;
 use DynaLoader;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 our @EXPORT_OK  = qw( Dump Load );
 our @ISA     = qw( Exporter DynaLoader );
 
@@ -51,6 +51,18 @@ JSON.pm comes with dozens of ways to do the same thing and lots of
 options, while JSON::Syck doesn't. There's only C<Load> and C<Dump>.
 
 Oh, and JSON::Syck doesn't use camelCase method names :-)
+
+=head1 UNICODE FLAGS
+
+By default this module doesn't touch any of Unicode flags, and assumes
+UTF-8 bytes to be passed and emit as an interface. However, when you
+set C<$JSON::Syck::ImplicitUnicode> to 1, this module properly decodes
+UTF-8 binaries and sets Unicode flag everywhere, as in:
+
+  JSON (UTF-8 bytes)     => Perl (Unicode flagged)
+  JSON (Unicode flagged) => Perl (Unicode flagged)
+  Perl (UTF-8 bytes)     => JSON (Unicode flagged)
+  Perl (Unicode flagged) => JSON (Unicode flagged)
 
 =head1 AUTHORS
 

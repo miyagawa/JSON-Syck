@@ -23,7 +23,6 @@ node.c
 perl_syck.h
 ppport.h
 ppport_math.h
-Storable.xs
 syck.h
 Syck.xs
 syck_.c
