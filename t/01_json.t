@@ -24,6 +24,9 @@ my @tests = (
     '{"foo":"bar"}',
     '[{"foo": 2}, {"foo": "bar"}]',
     qq("\xe5\xaa\xbe"),
+    'null',
+    '{"foo":null}',
+    '""',
 );
 
 plan tests => scalar @tests * (1 + $HAS_JSON) * 2;
