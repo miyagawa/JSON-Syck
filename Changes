@@ -1,3 +1,8 @@
+0.05 2006-01-16T09:50:18Z
+        * Added more tests. Fixed undef <=> null roundtrip problem
+          (Reported by kazeburo)
+        * Fixed segmentation fault with [null,null] (Audrey Tang)
+
 0.04 2006-01-16T04:57:40Z
         * Merged from YAML::Syck 0.27 and added SingleQuote flag
 
