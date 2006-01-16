@@ -13,6 +13,7 @@ __PACKAGE__->bootstrap;
 $JSON::Syck::ImplicitTyping  = 1;
 $JSON::Syck::Headless        = 1;
 $JSON::Syck::ImplicitUnicode = 0;
+$JSON::Syck::SingleQuote     = 0;
 
 1;
 
@@ -63,6 +64,15 @@ UTF-8 binaries and sets Unicode flag everywhere, as in:
   JSON (Unicode flagged) => Perl (Unicode flagged)
   Perl (UTF-8 bytes)     => JSON (Unicode flagged)
   Perl (Unicode flagged) => JSON (Unicode flagged)
+
+=head1 QUOTING
+
+According to the JSON specification, all JSON strings are to be double-quoted.
+However, when embedding JavaScript in HTML attributes, it may be more
+convenient to use single quotes.
+
+Set C<$JSON::Syck::SingleQuote> to 1 will make both C<Dump> and C<Load> expect
+single-quoted string literals.
 
 =head1 AUTHORS
 
