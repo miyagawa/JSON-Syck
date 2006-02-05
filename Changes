@@ -1,3 +1,7 @@
+0.06 2006-02-05T03:57:20Z
+        * Fixed bug around "://"
+          (Thanks to Anton Berezin)
+
 0.05 2006-01-16T09:50:18Z
         * Added more tests. Fixed undef <=> null roundtrip problem
           (Reported by kazeburo)

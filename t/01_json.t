@@ -30,6 +30,7 @@ my @tests = (
     '[null,null]',
     '["",null]',
     '{"foo":""}',
+    '["\"://\""]',
 );
 
 plan tests => scalar @tests * (1 + $HAS_JSON) * 2;
