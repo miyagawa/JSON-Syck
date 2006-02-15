@@ -34,3 +34,4 @@ t/01_json.t
 token.c
 yaml2byte.c
 yamlbyte.h
+syck_.c
